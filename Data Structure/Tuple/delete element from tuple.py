@@ -1,0 +1,6 @@
+my_tuple = ("apple", "samsung", "xiaomi")
+my_list = list(my_tuple)
+my_list.remove("xiaomi")
+my_list.remove("samsung")
+my_tuple = tuple(my_list)
+print(my_tuple)

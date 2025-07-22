@@ -43,16 +43,31 @@
 # print(arr)
 
 
-def bubble_sort_early_exit(arr):
-    for i in range(len(arr)):
-        early_exit = False
-        for j in range(0, len(arr) - 1, 1):
-            if arr[j] > arr[j + 1]:
-                arr[j + 1], arr[j] = arr[j], arr[j + 1]
-                early_exit = True
-        if not early_exit:
-                break
-    return arr
+# def bubble_sort_early_exit(arr):
+#     for i in range(len(arr)):
+#         early_exit = False
+#         for j in range(0, len(arr) - 1, 1):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j + 1], arr[j] = arr[j], arr[j + 1]
+#                 early_exit = True
+#         if not early_exit:
+#                 break
+#     return arr
+#
+# a = [4, 7, 9, 2, 3]
+# print(bubble_sort_early_exit(a))
 
-a = [4, 7, 9, 2, 3]
-print(bubble_sort_early_exit(a))
+
+# def bubble_sort_early_exit(arr):
+#     for i in range(len(arr) - 1):
+#         early_exit = False
+#         for j in range(len(arr) - 1 - i):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#                 early_exit = True
+#         if  not early_exit:
+#             break
+#     return arr
+#
+# a = [8,6,2,5,1,3]
+# print(bubble_sort_early_exit(a))

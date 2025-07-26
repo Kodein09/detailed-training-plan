@@ -174,21 +174,21 @@ from jinja2.sandbox import safe_range
 # print(selection_sort([3, 2, 0, 6, 1]))
 
 
-import unittest
-def selection_sort(arr):
-    arr = arr.copy()
-    for i in range(0, len(arr) - 1):    #O(n)
-        min_index = i    #O(1)
-        for j in range(i+1, len(arr)):    #O(n)
-            if arr[j] < arr[min_index]:    #O(1)
-                min_index = j    #O(1)
-        arr[i], arr[min_index] = arr[min_index], arr[i]    #O(1)
-    return arr    #O(1)
-
-print(selection_sort([6, 4, 8, 0, 1, 3]))
-
-class TestSelectionSort(unittest.TestCase):
-    def test_selection_sort(self):
-        arr = [0, 3, 2, 6, 5, 9]
-        result = selection_sort(arr.copy())
-        self.assertEqual(result, [0, 2, 3, 5, 6, 9])
+# import unittest
+# def selection_sort(arr):
+#     arr = arr.copy()
+#     for i in range(0, len(arr) - 1):    #O(n)
+#         min_index = i    #O(1)
+#         for j in range(i+1, len(arr)):    #O(n)
+#             if arr[j] < arr[min_index]:    #O(1)
+#                 min_index = j    #O(1)
+#         arr[i], arr[min_index] = arr[min_index], arr[i]    #O(1)
+#     return arr    #O(1)
+#
+# print(selection_sort([6, 4, 8, 0, 1, 3]))
+#
+# class TestSelectionSort(unittest.TestCase):
+#     def test_selection_sort(self):
+#         arr = [0, 3, 2, 6, 5, 9]
+#         result = selection_sort(arr.copy())
+#         self.assertEqual(result, [0, 2, 3, 5, 6, 9])

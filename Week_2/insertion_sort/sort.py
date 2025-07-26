@@ -59,7 +59,6 @@
 # print(insertion(a))    #O(1)
 
 
-
 # def insertion_sort(arr):
 #     for i in range(1, len(arr)):    #O(n)
 #         for j in range(i, 0, -1):    #O(n)       #O(n^2)
@@ -69,3 +68,12 @@
 #
 # array = [4, 3, 9, 6, 0, 2]
 # print(insertion_sort(array))    #O(1)
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        for j in range(i, 0, -1):
+            if arr[j] < arr[j - 1]:
+                arr[j], arr[j - 1] = arr[j - 1], arr[j]
+    return arr
+a = [0, 5, 4, 56, 2, 4, 1]
+print(insertion_sort(a))

@@ -97,14 +97,15 @@
 #         self.assertEqual(expected, result)
 
 
-numbers = [3,1,2]
-def bubble_sort(arr):
-    for i in range(len(arr) - 1, 0, -1):
-        for j in range(i):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    return arr
-print(bubble_sort(numbers))
+# numbers = [3,1,2]
+# def bubble_sort(arr):
+#     for i in range(len(numbers) - 1, 0, -1):
+#         for j in range(i):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+# print(bubble_sort(numbers))
+
 #
 # import unittest
 #
@@ -117,3 +118,4 @@ print(bubble_sort(numbers))
 #
 # if __name__ == '__main__':
 #     unittest.main()
+

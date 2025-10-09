@@ -27,6 +27,7 @@
 # print(merge_sort([3, 2, 1, 6, 8, 9, 4]))
 # print(merge_sort([]))
 # print(merge_sort([10]))
+import random
 
 
 # def merge_sort(arr):
@@ -248,3 +249,263 @@
 #         array = [8, 4, 7, 3, 9, 1, 5, 2]
 #         merge_sort(array)
 #         self.assertEqual(array, [1,2,3,4,5,7,8,9])
+
+
+# def merge_sort(arr):
+#     if len(arr) > 1:
+#         left = arr[len(arr)//2:]
+#         right = arr[:len(arr)//2]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i, j, k = 0, 0, 0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 arr[k] = left[i]
+#                 i += 1
+#
+#             else:
+#                 arr[k] = right[j]
+#                 j += 1
+#             k += 1
+#
+#         while i < len(left):
+#             arr[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len([right]):
+#             arr[k] = right[j]
+#             j += 1
+#             k += 1
+#     return arr
+# print(merge_sort([0,5,3,1,7,9,2]))
+
+
+# import tracemalloc
+# import time
+# import unittest
+#
+# tracemalloc.start()
+#
+# def merge_sort(arr):
+#     if not all(isinstance(x, (int, float)) for x in arr):
+#         raise TypeError("Array must contain only numbers.")
+#
+#     if len(arr) > 1:
+#         left = arr[:len(arr) // 2]
+#         right = arr[len(arr) // 2:]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i, j, k = 0, 0, 0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 arr[k] = left[i]
+#                 i += 1
+#             else:
+#                 arr[k] = right[j]
+#                 j += 1
+#             k += 1
+#
+#         while i < len(left):
+#             arr[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len(right):
+#             arr[k] = right[j]
+#             j += 1
+#             k += 1
+#     return arr
+#
+# snapshot = tracemalloc.take_snapshot()
+# top_stats = snapshot.statistics('lineno')
+# print("[ Top 10] ")
+# for stat in top_stats:
+#     print(stat)
+#
+# start_time = time.time()
+# result = merge_sort([4,3,0,9,7,5,3,2,1])
+# end_time = time.time()
+#
+# elapsed_time = end_time - start_time
+# print(f"Result: {result}\nTime: {elapsed_time}")
+#
+# class TestMergeSort(unittest.TestCase):
+#     def test_merge_sort(self):
+#         self.assertEqual(merge_sort([0,9,5,3,8,4,1]), [0,1,3,4,5,8,9])
+#
+#     def test_empty_array(self):
+#         self.assertIs(merge_sort([]), True)
+#
+#     def test_invalid_value(self):
+#         with self.assertRaises(TypeError):
+#             merge_sort(['a', 'b', True, 'c'])
+#
+# if __name__ == '__main__':
+#     unittest.main()
+
+
+# import time
+# import tracemalloc
+# import unittest
+#
+# def merge_sort(arr):
+#     if not all(isinstance(x, (int, float)) for x in arr):
+#         raise TypeError('Arrays contain only numbers')
+#
+#     if len(arr) > 1:
+#         left = arr[:len(arr) // 2]
+#         right = arr[len(arr) // 2:]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i,j,k = 0,0,0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 arr[k] = left[i]
+#                 i += 1
+#             else:
+#                 arr[k] = right[j]
+#                 j += 1
+#             k += 1
+#
+#         while i < len(left):
+#             arr[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len(right):
+#             arr[k] = right[j]
+#             j += 1
+#             k += 1
+#
+#     return arr
+#
+# tracemalloc.start()
+# start_time = time.time()
+#
+# result = merge_sort([0,9,6,3,7,2,1])
+#
+# end_time = time.time()
+# elapsed_time = end_time - start_time
+# current, peak = tracemalloc.get_traced_memory()
+# tracemalloc.stop()
+# print(f"Time complexity: {elapsed_time:.10f} seconds\nResult of sort: {result}\nCurrent memory usage: {current / 1024:.2f} KiB\nPeak memory usage: {peak / 1024:.2f} KiB")
+#
+# class TestMergeSort(unittest.TestCase):
+#     def test_merge_sort(self):
+#         self.assertEqual(merge_sort([0,7,5,4,3,9,1]), [0,1,3,4,5,7,9])
+#
+#     def test_empty_array(self):
+#         self.assertEqual(merge_sort([]), [])
+#
+#     def test_invalid_value(self):
+#         with self.assertRaises(TypeError):
+#             merge_sort(['a', 'b', 'c', False, True])
+#
+# if __name__ == '__main__':
+#     unittest.main()
+
+# def merge_sort(arr):
+#     if len(arr) > 1:
+#         left = arr[:len(arr) // 2]
+#         right = arr[len(arr) // 2:]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i = j = k = 0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 arr[k] = left[i]
+#                 i += 1
+#             else:
+#                 arr[k] = right[j]
+#                 j += 1
+#
+#         while i < len(left):
+#             arr[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len(right):
+#             arr[k] = right[j]
+#             j += 1
+#             k += 1
+#
+#     return arr
+# print(merge_sort([random.randint for i in range(5)]))
+
+
+# def merge_sort(nums):
+#     if len(nums) > 1:
+#         left = nums[:len(nums) // 2]
+#         right = nums[len(nums) // 2:]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i, j, k = 0, 0, 0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 nums[k] = left[i]
+#                 i += 1
+#             else:
+#                 nums[k] = right[j]
+#                 j += 1
+#             k += 1
+#
+#         while i < len(left):
+#             nums[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len(right):
+#             nums[k] = right[j]
+#             j += 1
+#             k += 1
+#
+#     return nums
+# print(merge_sort([5,1,1,2,0,0]))
+
+def merge_sort(arr):
+    if len(arr) > 1:
+        left = arr[:len(arr) // 2]
+        right = arr[len(arr) // 2:]
+
+        merge_sort(left)
+        merge_sort(right)
+
+        i,j,k = 0,0,0
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
+
+    return arr
+print(merge_sort([7,4,9,3]))

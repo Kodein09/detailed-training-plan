@@ -106,3 +106,25 @@
 #
 # if __name__ == '__main__':
 #     unittest.main()
+
+# def linear_search(arr, search_item):
+#     for i in range(len(arr)):
+#         if arr[i] == search_item:
+#             return i
+#     return -1
+#
+# print(linear_search([0,1,2,3,4,5,6,7,8,9,10], 5))
+
+# def linear_search(arr, target):
+#     for i in range(len(arr)):
+#         if arr[i] == target:
+#             return i
+#     return -1
+# print(linear_search([1,2,3,4,5,6,7,8,9], 9))
+
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+print(linear_search([0,1,2,3,4,5,6,7,8,9,10], 10))

@@ -26,6 +26,7 @@
 # arr = [22, 11, 88, 66, 55, 77, 33, 44]
 # quick_sort(arr, 0, len(arr) - 1)
 # print(arr)
+import random
 
 
 # def quicksort(arr, left, right):
@@ -161,7 +162,7 @@
 #     pivot = arr[right]    # 44
 #
 #     while i < j:    # Пока индексы не пересеклись
-#         while i < right and j < arr[i] < pivot:    # Пока индекс i меньше индекса правой части, или же пока i не дошёл до конца списка И элемент i меньше pivot это последни элемент
+#         while i < right and j < arr[i] < pivot:    # Пока индекс i меньше индекса правой части, или пока i не дошёл до конца списка И элемент j меньше pivot это последни элемент
 #             i += 1    # i идёт вправо увеличиваясь каждый раз на 1 индекс
 #
 #         while j > left and arr[j] >= pivot:
@@ -178,3 +179,126 @@
 # a = [22, 11, 88, 55, 77, 66, 44]
 # quicksort(a, 0, len(a) - 1)
 # print(a)
+
+# def quicksort(arr, left, right):
+#     if left < right:
+#         partition_pos = partition(arr, left, right)
+#         quicksort(arr, left, partition_pos - 1)
+#         quicksort(arr, partition_pos + 1, right)
+#     return arr
+#
+# def partition(arr, left, right):
+#     i,j,p = left, right - 1, arr[right]
+#
+#     while i < j:
+#         while i < right and arr[i] < p:
+#             i += 1
+#
+#         while j > left and arr[j] >= p:
+#             j -= 1
+#
+#         if i < j:
+#             arr[i], arr[j] = arr[j], arr[i]
+#
+#     if arr[i] > p:
+#         arr[i], arr[right] = arr[right], arr[i]
+#
+#     return i
+# a = [0,5,3,4,2,1,6,8,7,9]
+# print(quicksort(a, 0, len(a) - 1))
+
+
+# def quick_sort(arr, left, right):
+#     if left < right:
+#         part_pos = partition(arr, left, right)
+#         quick_sort(arr, left, part_pos - 1)
+#         quick_sort(arr, part_pos + 1, right)
+#     return arr
+#
+# def partition(arr, left, right):
+#     i = left
+#     j = right - 1
+#     pivot = arr[right]
+#
+#     while i < j:
+#         while i < right and arr[i] < pivot:
+#             i += 1
+#         while j > left and arr[j] >= pivot:
+#             j -= 1
+#
+#         if i < j:
+#             arr[i], arr[j] = arr[j], arr[i]
+#
+#     if arr[i] > pivot:
+#         arr[i], arr[right] = arr[right], arr[i]
+#
+#     return i
+#
+# array = [random.randint(0, 100) for _ in range(10)]
+# print(quick_sort(array, 0, len(array) - 1))
+
+
+# def quicksort(arr, left, right):
+#     if left < right:
+#         part_pos = partition(arr, left, right)
+#         quicksort(arr, left, part_pos - 1)
+#         quicksort(arr, part_pos + 1, right)
+#     return arr
+#
+# def partition(arr, left, right):
+#     pivot = arr[right]
+#     i = left - 1
+#     for j in range(left, right):
+#         if arr[j] <= pivot:
+#             i += 1
+#             arr[i], arr[j] = arr[j], arr[i]
+#     arr[i + 1], arr[right] = arr[right], arr[i + 1]
+#     return i + 1
+#
+# array = [random.randint(0, 100) for _ in range(10)]
+# print(quicksort(array, 0, len(array) - 1))
+
+# def quicksort(arr, left, right):
+#     if left < right:
+#         part_pos = partition(arr, left, right)
+#         quicksort(arr, left, part_pos - 1)
+#         quicksort(arr, part_pos + 1, right)
+#     return arr
+#
+# def partition(arr, left, right):
+#     pivot = arr[right]
+#     i = left - 1
+#     for j in range(left, right):
+#         if arr[j] <= pivot:
+#             i += 1
+#     arr[i + 1], arr[right] = arr[right], arr[i + 1]
+#     return i + 1
+#
+# array = [8,6,3,7,4,1,2]
+# print(quicksort(array, 0, len(array) - 1))
+
+
+# def quicksort(arr):
+#     if len(arr) <= 1:
+#         return arr
+#
+#     pivot = arr[len(arr) // 2]
+#     left = list(filter(lambda x: x<pivot, arr))
+#     center = [i for i in arr if i == pivot]
+#     right = list(filter(lambda x: x>pivot, arr))
+#
+#     return quicksort(left) + center + quicksort(right)
+# print(quicksort([7,6,10,5,9,8,3,4]))
+
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+    left = list(filter(lambda x: x<pivot, arr))
+    center = [i for i in arr if i == pivot]
+    right = list(filter(lambda x: x>pivot, arr))
+
+    return quicksort(left) + center + quicksort(right)
+print(quicksort([7,9,6,4,8,10,2,5,3]))

@@ -140,23 +140,38 @@
 # wallet.add(2)
 
 
-def retry_once(func):
-    def wrapper(self, *args, **kwargs):
-        try:
-            return func(self, *args, **kwargs)
-        except Exception as e:
-            print(f"Error: {repr(e)}, retry...")
-            return func(self, *args, **kwargs)
-    return wrapper
+# def retry_once(func):
+#     def wrapper(self, *args, **kwargs):
+#         try:
+#             return func(self, *args, **kwargs)
+#         except Exception as e:
+#             print(f"Error: {repr(e)}, retry...")
+#             return func(self, *args, **kwargs)
+#     return wrapper
+#
+# import random
+#
+# class Network:
+#     @retry_once
+#     def fetch(self):
+#         if random.random() < 0.5:
+#             raise ConnectionError("Error network!")
+#         print("Receive data")
+#
+# net = Network()
+# net.fetch()
 
-import random
-
-class Network:
-    @retry_once
-    def fetch(self):
-        if random.random() < 0.5:
-            raise ConnectionError("Error network!")
-        print("Receive data")
-
-net = Network()
-net.fetch()
+# import webbrowser
+#
+# def validator(func):
+#     def wrapper(url):
+#         print("This text is before call func")
+#         func(url)
+#         print("This text is after call func")
+#     return wrapper
+#
+# @validator
+# def open_url(url):
+#     webbrowser.open(url)
+#
+# open_url("https://www.youtube.com")

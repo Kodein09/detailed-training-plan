@@ -12,6 +12,8 @@
 #             a[j], a[j+1] = a[j+1], a[j]
 #
 # print(a)
+import random
+
 
 # array = [0,5,3,7,2,9,1]
 # for i in range(len(array) - 1):
@@ -119,3 +121,100 @@
 # if __name__ == '__main__':
 #     unittest.main()
 
+# import unittest
+#
+# def bubble_sort(arr):
+#     if not all(isinstance(x, (int, float)) for x in arr):
+#         raise ValueError("All elements in list must be numbers.")
+#     for i in range(len(arr) - 1, 0, -1):    #Для i в диапазоне от конца массива до 0 проходясь по списку в обратную сторону (шаг минус один)
+#         for j in range(i):    #j в диапазоне от 0 до i, к примеру [6,2,1,4,3] от 1 до 4
+#             if arr[j] > arr[j + 1]:    # если элемент j будет меньше элемента j - 1, т.е. [6,2,1,4,3] допустим j на 1 это означает, что надо сравнивать предыдущий элемент от 1 в левую сторону 4 и если 1 < 4 меняем местами
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]    # меняем местами значения
+#     return arr    # return array
+# # estimate of the time complexity of this algorithm - O(n^2) at worst
+#
+# print(bubble_sort([6,2,1,4,3]))
+#
+# class TestBubbleSort(unittest.TestCase):
+#     def test_bubble_sort(self):
+#         self.assertEqual(bubble_sort([6,2,1,4,3]), [1,2,3,4,6])
+#
+#     def test_empty_list(self):
+#         self.assertFalse(bubble_sort([]))
+#
+#     def test_empty_result(self):
+#         self.assertFalse(bubble_sort([]))
+#
+#     def test_is_digit(self):
+#         self.assertIsInstance(bubble_sort([6,2,1,4,3]), list)
+#
+#     def test_invalid_value(self):
+#         with self.assertRaises(ValueError):
+#             bubble_sort(['a', 'b', 'c'])
+
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1, 0, -1):
+#         for j in range(i):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j + 1], arr[j] = arr[j], arr[j + 1]
+#     return arr
+# print(bubble_sort([3, 2, 1, 5, 7, 9, 0]))
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1):
+#         for j in range(0, len(arr) - 1 - i):
+#             if arr[j + 1] < arr[j]:
+#                 arr[j + 1], arr[j] = arr[j], arr[j + 1]
+#     return arr
+# print(bubble_sort([0,9,6,7,4,2,3,1]))
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1):
+#         for j in range(0, len(arr) - 1 - i):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+# print(bubble_sort([random.randint(0, 100) for x in range(0, 10_000)]))
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1):
+#         for j in range(0, len(arr) - i - 1):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+
+# def bubble_sort(arr):
+#     find_max = 0
+#     for i in range(len(arr) - 1):
+#         for j in range(0, len(arr) - i - 1):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#                 find_max = arr[j + 1]
+#     return arr, find_max
+# print(bubble_sort([3,2,1,5,6,4]))
+
+# def bubble_sort(strings):
+#     for i in range(len(strings) - 1):
+#         for j in range(0, len(strings) - 1 - i):
+#             if len(strings[j]) > len(strings[j + 1]):
+#                 strings[j], strings[j + 1] = strings[j + 1], strings[j]
+#     return strings
+# print(bubble_sort(["python", "ai", "bubble", "tree", "tea"]))
+
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1):
+#         for j in range(0, len(arr) - i - 1):
+#             if arr[j + 1] < arr[j]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+# print(bubble_sort([5,3,7,1,4,0]))
+
+# def bubble_sort(arr):
+#     for i in range(len(arr) - 1):
+#         for j in range(len(arr) - 1 - i):
+#             if arr[j] > arr[j + 1]:
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+# print(bubble_sort([9,8,7,6,5,4,3,2,1]))

@@ -44,18 +44,49 @@ from typing import List, Dict
 # count_letters(my_text)
 
 
-example_of_my_text = "Abracadabra"
-some_list = [1,1,1,2,2,1,1,3,13,4,5,25,25]
+# example_of_my_text = "Abracadabra"
+# some_list = [1,1,1,2,2,1,1,3,13,4,5,25,25]
+#
+# def count_element(list_of_elem) -> Dict:
+#     dict_of_elem = {}
+#     for i in list_of_elem:
+#         if i in dict_of_elem:
+#             dict_of_elem[i] += 1
+#         else:
+#             dict_of_elem[i] = 1
+#
+#     return dict_of_elem
+#
+# print(count_element(example_of_my_text))
+# print(count_element(some_list))
 
-def count_element(list_of_elem) -> Dict:
-    dict_of_elem = {}
-    for i in list_of_elem:
-        if i in dict_of_elem:
-            dict_of_elem[i] += 1
-        else:
-            dict_of_elem[i] = 1
 
-    return dict_of_elem
+class CountElement:
+    def __init__(self):
+        self.list = []
+        self.freq = {}
 
-print(count_element(example_of_my_text))
-print(count_element(some_list))
+    def append(self, value):
+        self.list.append(value)
+
+    def count_frequency_in_list(self):
+        for value in self.list:
+            if value in self.freq:
+                self.freq[value] += 1
+                print(self.freq)
+            else:
+                self.freq[value] = 1
+                print(self.freq)
+
+        return self.freq
+
+count = CountElement()
+count.append(1)
+count.append(2)
+count.append(3)
+count.append(4)
+count.append(4)
+count.append(4)
+count.append(3)
+count.append(2)
+print(count.count_frequency_in_list())

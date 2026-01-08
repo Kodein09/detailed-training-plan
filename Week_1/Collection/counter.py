@@ -60,3 +60,15 @@ from collections import Counter
 #
 # print(word_frequency_analysis(text))
 
+# transactions = [
+#     'deposit', 'withdraw', 'deposit', 'deposit',
+#     'withdraw', 'transfer', 'deposit', 'withdraw'
+# ]
+#
+# count = Counter(transactions)
+# print(count)
+# print(count.most_common(1)[0])
+#
+# for op, c in count.items():
+#     if c == 1:
+#         print(c)

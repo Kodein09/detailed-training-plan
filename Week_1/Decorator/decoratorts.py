@@ -175,3 +175,47 @@
 #     webbrowser.open(url)
 #
 # open_url("https://www.youtube.com")
+
+# def decorator(func):
+#     def wrapper():
+#         print('Before')
+#         func()
+#         print('After')
+#     return wrapper
+#
+# @decorator
+# def hello_wold():
+#     print('Hello World!')
+
+# from functools import wraps
+#
+# def my_decorator(func):
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+#         print('Before')
+#         result = func(*args, **kwargs)
+#         print('After')
+#         return result
+#     return wrapper
+#
+# def hello_world():
+#     print('Hello World!')
+#
+# my_decorator(hello_world)()
+
+# from functools import wraps
+#
+# def my_decorator(func):
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+#         print('Before func')
+#         result = func(*args, **kwargs)
+#         print('After func')
+#         return result
+#     return wrapper
+#
+# @my_decorator
+# def hello(name):
+#     print(f"Hello, {name}.")
+#
+# hello('Roy')

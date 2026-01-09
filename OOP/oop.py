@@ -166,7 +166,7 @@
 #         with open(self.file_path, 'r') as country_file:
 #             return json.load(country_file)
 #
-# egypt = CountryData('test.json')
+# egypt = CountryData('')
 # print(egypt.file_data)
 # print(f"Country: {egypt.country}")
 # print(f"Max summer temperature in {egypt.country}: {egypt.max_temp}")

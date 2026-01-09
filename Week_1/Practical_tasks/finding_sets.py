@@ -120,3 +120,39 @@
 # def multiply(n): return lambda m: n * m
 # answer = multiply(n=20)
 # print(answer(m=10))
+
+# def finding_intersection_and_union_of_sets(s1, s2):
+#     result = s1.copy()
+#     intersection = 0
+#     for i in s2:
+#         if i in s1:
+#             intersection = i
+#             result = s1 | s2
+#     return f"Intersection: {intersection}, Union sets: {result}"
+#
+# temp1 = {1,7,4,3}
+# temp2 = {3,5,6,10}
+# print(finding_intersection_and_union_of_sets(temp1, temp2))
+
+# def finding_intersection_and_union_of_sets(s1, s2):
+#     intersection = s1 & s2
+#     result = s1 | s2
+#     return f"Union of sets: {result}\nIntersection: {intersection}"
+#
+# temp1 = {1,2,7,8,4}
+# temp2 = {5,3,6,9,2}
+# print(finding_intersection_and_union_of_sets(temp1, temp2))
+
+# def finding_intersection_and_union_of_sets(s1, s2):
+#     intersection = set()
+#     union = s1.copy()
+#     for i in s2:
+#         if i in s1:
+#             intersection.add(i)
+#         union.add(i)
+#
+#     return union, intersection
+#
+# temp1 = {1,2,7,8,4,2,2,3,3}
+# temp2 = {5,3,6,9,2,2,3,3,2}
+# print(finding_intersection_and_union_of_sets(temp1, temp2))

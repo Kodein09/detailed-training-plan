@@ -12,7 +12,6 @@
 #
 # a = [7,4,2,1,6,8]
 # print(selection_sort(a))
-from jinja2.sandbox import safe_range
 
 # def selection_sort(arr):
 #     for i in range(len(arr)):
@@ -192,3 +191,35 @@ from jinja2.sandbox import safe_range
 #         arr = [0, 3, 2, 6, 5, 9]
 #         result = selection_sort(arr.copy())
 #         self.assertEqual(result, [0, 2, 3, 5, 6, 9])
+
+
+# def selection_sort(arr):
+#     for i in range(len(arr) - 1):
+#         min_index = i
+#         for j in range(i+1, len(arr)):
+#             if arr[j] < arr[min_index]:
+#                 min_index = j
+#         arr[min_index], arr[i] = arr[i], arr[min_index]
+#     return arr
+# print(selection_sort([64, 34, 25, 5, 22, 11, 90, 12]))
+
+
+# def selection_sort(arr):
+#     for i in range(len(arr) - 1):
+#         min_index = i
+#         for j in range(i+1, len(arr)):
+#             if arr[j] < arr[min_index]:
+#                 min_index = j
+#         arr[i], arr[min_index] = arr[min_index], arr[i]
+#     return arr
+# print(selection_sort([9,4,7,5,6,3,67,23,75]))
+
+def selection_sort(arr):
+    for i in range(len(arr)-1):
+        min_index = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+print(selection_sort([8,75,74,85,23,89]))

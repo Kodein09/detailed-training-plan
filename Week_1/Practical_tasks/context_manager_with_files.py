@@ -20,6 +20,19 @@
 #     return None
 # print(context_manager('temp.txt'))
 
+# class ContextManager:
+#     def __init__(self, file):
+#         self.file = file
+#         self.path = None
+#
+#     def __enter__(self):
+#         read = open(self.file, 'r')
+#         self.path = read
+#         return self.path
+#
+#     def __exit__(self, exc_type, exc_val, exc_tb):
+#         self.path.close()
+
 class ContextManager:
     def __init__(self, file):
         self.file = file

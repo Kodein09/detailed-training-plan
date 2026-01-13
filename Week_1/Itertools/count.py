@@ -1,4 +1,4 @@
-from itertools import count
+from itertools import count, islice
 
 # for i in count(10):
 #     if i > 14:
@@ -91,3 +91,31 @@ from itertools import count
 #     print(result)
 #
 # squares_value()
+
+from itertools import count
+
+# def arithmetic_progression(a, d, n):
+#     while a != n:
+#         yield a
+#         a += d
+#
+# gen = arithmetic_progression(0, 1, 10)
+# for i in gen:
+#     print(i)
+
+#count from itertools
+# def cnt(start=0, step=1):
+#     number = start
+#     while True:
+#         yield number
+#         number += step
+# gen = cnt()
+# for i in gen:
+#     print(i)
+
+# for x in islice(count(0, 2), 100):
+#     print(x)
+
+# data = iter(range(10))
+# print(list(islice(range(10), 2, 9, 2)))
+

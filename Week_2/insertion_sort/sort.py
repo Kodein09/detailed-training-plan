@@ -225,12 +225,30 @@ import random
 # print(insertion_sort([7,6,4,3]))
 
 
+# def insertion_sort(arr):
+#     for i in range(1, len(arr)):
+#         for j in range(i, 0, -1):
+#             if arr[j - 1] > arr[j]:
+#                 arr[j - 1], arr[j] = arr[j], arr[j - 1]
+#             else:
+#                 break
+#     return arr
+# print(insertion_sort([9,8,7,6,5,4,3]))
+
+# def insertion_sort(arr):
+#     for i in range(len(arr)):
+#         for j in range(i, 0, -1):
+#             if arr[j-1] > arr[j]:
+#                 arr[j], arr[j-1] = arr[j-1], arr[j]
+#     return arr
+# print(insertion_sort([53,64,74,12,75,84,90]))
+
 def insertion_sort(arr):
-    for i in range(1, len(arr)):
+    for i in range(len(arr)):
         for j in range(i, 0, -1):
-            if arr[j - 1] > arr[j]:
-                arr[j - 1], arr[j] = arr[j], arr[j - 1]
+            if arr[j-1] > arr[j]:
+                arr[j], arr[j-1] = arr[j-1], arr[j]
             else:
                 break
     return arr
-print(insertion_sort([9,8,7,6,5,4,3]))
+print(insertion_sort([1,2,3,4,5,6,8,45,34,10,9]))

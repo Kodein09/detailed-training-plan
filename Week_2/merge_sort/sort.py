@@ -478,6 +478,38 @@ import random
 #     return nums
 # print(merge_sort([5,1,1,2,0,0]))
 
+# def merge_sort(arr):
+#     if len(arr) > 1:
+#         left = arr[:len(arr) // 2]
+#         right = arr[len(arr) // 2:]
+#
+#         merge_sort(left)
+#         merge_sort(right)
+#
+#         i,j,k = 0,0,0
+#
+#         while i < len(left) and j < len(right):
+#             if left[i] < right[j]:
+#                 arr[k] = left[i]
+#                 i += 1
+#             else:
+#                 arr[k] = right[j]
+#                 j += 1
+#             k += 1
+#
+#         while i < len(left):
+#             arr[k] = left[i]
+#             i += 1
+#             k += 1
+#
+#         while j < len(right):
+#             arr[k] = right[j]
+#             j += 1
+#             k += 1
+#
+#     return arr
+# print(merge_sort([7,4,9,3]))
+
 def merge_sort(arr):
     if len(arr) > 1:
         left = arr[:len(arr) // 2]
@@ -486,8 +518,7 @@ def merge_sort(arr):
         merge_sort(left)
         merge_sort(right)
 
-        i,j,k = 0,0,0
-
+        i, j, k = 0, 0, 0
         while i < len(left) and j < len(right):
             if left[i] < right[j]:
                 arr[k] = left[i]
@@ -506,6 +537,6 @@ def merge_sort(arr):
             arr[k] = right[j]
             j += 1
             k += 1
-
     return arr
-print(merge_sort([7,4,9,3]))
+
+print(merge_sort([12, 8, 9, 3, 11, 5, 4]))

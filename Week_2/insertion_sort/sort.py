@@ -245,10 +245,10 @@ import random
 
 def insertion_sort(arr):
     for i in range(len(arr)):
-        for j in range(i, 0, -1):
+        for j in range(i+1, 0, -1):
             if arr[j-1] > arr[j]:
                 arr[j], arr[j-1] = arr[j-1], arr[j]
             else:
                 break
     return arr
-print(insertion_sort([1,2,3,4,5,6,8,45,34,10,9]))
+print(insertion_sort([1,2,3,4,45,34,10,9]))

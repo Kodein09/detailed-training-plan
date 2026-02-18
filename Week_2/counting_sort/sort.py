@@ -44,3 +44,27 @@
 #
 #     return sorted_arr
 # print(counting_sort([1,4,3,2,2,4,3,3,2,4,1,1,1,1]))
+
+def counting_sort(arr):
+    if not arr:
+        return None
+
+    max_value = max(arr)
+    count_array = [0] * (max_value + 1)
+
+    for i in arr:
+        count_array[i] += 1
+
+    for j in range(1, max_value + 1):
+        count_array[j] += count_array[j - 1]
+
+    ans = [0] * len(arr)
+
+    for i in range(len(arr) - 1, -1, -1):
+        v = arr[i]
+        ans[count_array[v] - 1] = v
+        count_array[v] -= 1
+
+    return ans
+
+print(counting_sort([3,2,4,1]))

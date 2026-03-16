@@ -48,13 +48,15 @@ df = pd.DataFrame({
 # print(df["Age"].max())
 
 #Iterate through entirely dataframe
-for i in df.items():
-    print("\nResult:\n", i)
+# for i in df.items():
+#     print("\nResult:\n", i)
 
 #Iterate through series age with condition
-oldest = 0
-for j in pd.Series.items(df["Age"]):
-    if j[1] > oldest:
-        oldest = j[1]
+# oldest = 0
+# for j in pd.Series.items(df["Age"]):
+#     if j[1] > oldest:
+#         oldest = j[1]
+#
+# print(f"Oldest passenger in table has {oldest} years old.")
 
-print(f"Oldest passenger in table has {oldest} years old.")
+#Selecting a single column

@@ -47,8 +47,15 @@ class ProcessingData:
         return df
 
     def category(self, df: pd.DataFrame):
-        str_col = df.select_dtypes(include='object').columns
-        df[str_col] = df[str_col].astype(dtype='category')
+        for col in df.select_dtypes(include='object').columns:
+            num_unique = df[col].nunique()
+            print(f"df[col]:\n{df[col]}")
+            print(f"Unique numbers: {num_unique}")
+            num_total = len(df)
+            print(f"Total numbers: {num_total}")
+
+            if num_unique / num_total <= 0.5:
+                df[col] = df[col].astype('category')
         return df
 
     def iqr(self, df: pd.DataFrame):
@@ -58,10 +65,17 @@ class ProcessingData:
 
         IQR = Q3 - Q1
 
-        condition = ~((num_df < (Q1 - 1.5 * IQR)) |
-                      (num_df > (Q3 + 1.5 * IQR))).any(axis=1)
+        for col in num_df.columns:
+            print(f"Numbers df:\n{num_df}")
+            print(f"Column: {col}")
+            condition = ((df[col] < (Q1[col] - 1.5 * IQR[col])) |
+                      (df[col] > (Q3[col] + 1.5 * IQR[col])))
 
-        return df[condition]
+            print(f"Condition: {condition}")
+            print(f"df.loc[condition, col]: {df.loc[condition, col]}")
+            df.loc[condition, col] = np.nan
+
+        return df
 
     def z_score(self, df: pd.DataFrame):
         num_col = df.select_dtypes(include=np.number).columns
@@ -130,12 +144,49 @@ class TestProcessingData(unittest.TestCase):
         pd.testing.assert_frame_equal(result, expected, check_dtype=True)
 
     def test_category(self):
-        pass
+        df = pd.DataFrame({
+            "col1": [1,1,2,3],
+            "col2": ["2025-12-01", "2025-12-01", "2025-12-04", "2025-12-04"],
+            "col3": ["apple", "banana", "apple", "apple"]
+        })
+
+        result = self.test.category(df)
+
+        self.assertNotEqual(result["col1"].dtype, "category")
+        self.assertEqual(result["col2"].dtype, "category")
+        self.assertEqual(result["col3"].dtype, "category")
 
     def test_iqr(self):
-        result = self.test.iqr()
+        df = pd.DataFrame({
+            "col1": [1, 1, 2, 100],
+            "col2": ["2025-12-01", "2025-12-01", "1909-12-04", "2025-12-04"],
+            "col3": ["apple", "banana", "apple", "apple"]
+        })
 
-        pass
+        result = self.test.iqr(df)
+
+        expected = pd.DataFrame({
+            "col1": [1, 1, 2, np.nan],
+            "col2": ["2025-12-01", "2025-12-01", "1909-12-04", "2025-12-04"],
+            "col3": ["apple", "banana", "apple", "apple"]
+        })
+
+        pd.testing.assert_frame_equal(result, expected)
 
     def test_zscore(self):
-        pass
+        df = pd.DataFrame({
+            "col1": [1, 1, 2, 100],
+            "col2": ["2025-12-01", "2025-12-01", "1909-12-04", "2025-12-04"],
+            "col3": ["apple", "banana", "apple", "apple"]
+        })
+
+        result = self.test.z_score(df)
+        print(result)
+
+        expected = pd.DataFrame({
+            "col1": [-0.50, -0.50, -0.48, 1.49],
+            "col2": ["2025-12-01", "2025-12-01", "1909-12-04", "2025-12-04"],
+            "col3": ["apple", "banana", "apple", "apple"]
+        })
+
+        pd.testing.assert_frame_equal(result, expected, atol=1e-2)

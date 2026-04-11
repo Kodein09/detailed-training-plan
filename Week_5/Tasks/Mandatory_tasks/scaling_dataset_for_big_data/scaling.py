@@ -60,7 +60,7 @@ class ScalingBigData:
         for col in str_col:
             most_frequent = df_copy[col].mode()
             if not most_frequent.empty:
-                df_copy[col] = df_copy[col].fillna('Unknown')
+                df_copy[col] = df_copy.fillna(most_frequent[0])
 
         df_copy = df_copy.replace(to_replace="Unknown", value=np.nan)
 

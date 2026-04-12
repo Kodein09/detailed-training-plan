@@ -85,7 +85,8 @@ class Imputation:
         return pd.DataFrame(valid_rows), errors
 
     def run_pipeline(self, df: pd.DataFrame):
-        cleaned_df = (df.pipe(self.drop_duplicates)
+        cleaned_df = (
+            df.pipe(self.drop_duplicates)
               .pipe(self.fix_types)
               .pipe(self.fill_missing))
 

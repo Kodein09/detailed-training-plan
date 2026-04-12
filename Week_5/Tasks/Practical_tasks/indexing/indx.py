@@ -2,7 +2,8 @@ import pandas as pd
 
 print(pd.options.display.max_rows)
 
-df = pd.read_csv("../Mall_Customers.csv")
+df = pd.read_csv("../train.csv")
+df.dropna()
 print(df.head().to_string(), '\n')
 
 # loc = df.loc[198, "Genre"]

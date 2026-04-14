@@ -160,12 +160,12 @@ class PriorityQueue:
             self.heap = list(items)
             self._build_heap()
 
-    def _comparison(self, value1, value2):
+    def _comparison(self, value1: int, value2: int) -> bool:
         if self.is_min_heap:
             return value1 < value2
         return value1 > value2
 
-    def _shift_up(self, i):
+    def _shift_up(self, i: int) -> None:
         while i > 0:
             parent = (i - 1) // 2
             if self.heap[parent] > self.heap[i]:
@@ -174,7 +174,7 @@ class PriorityQueue:
             else:
                 break
 
-    def _shift_down(self, i):
+    def _shift_down(self, i: int) -> None:
         self.heap[0] = self.heap.pop()
 
         while i < len(self.heap):
@@ -194,15 +194,18 @@ class PriorityQueue:
             self.heap[i], self.heap[root] = self.heap[root], self.heap[i]
             i = root
 
-    def _build_heap(self):
+    def _build_heap(self) -> None:
         for i in range((len(self.heap) - 1), -1, -1):
             self._shift_down(i)
 
-    def push(self, value):
+    def push(self, value: int) -> None:
         self.heap.append(value)
         self._shift_up(len(self.heap) - 1)
 
-    def pop(self):
+    def pop(self) -> int:
         root = self.heap[0]
         self._shift_down(0)
         return root
+
+pq = PriorityQueue()
+pq.push(10)

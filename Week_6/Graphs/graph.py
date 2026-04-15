@@ -381,3 +381,145 @@ from collections import deque
 #
 # bfs(graph_data, 'A')
 
+# class AdjacencyMatrix:
+#     def __init__(self, size):
+#         self.adj_matrix = [[0] * size for _ in range(size)]
+#         self.size = size
+#         self.vertex_data = [''] * size
+#
+#     def add_edge(self, u, v):
+#         if 0 <= u < self.size and 0 <= v < self.size:
+#             self.adj_matrix[u][v] = 1
+#             self.adj_matrix[v][u] = 1
+#
+#     def add_vertex(self, vertex, data):
+#         if 0 <= vertex < self.size:
+#             self.vertex_data[vertex] = data
+#
+#     def print_graph(self):
+#         print("Adjacency Matrix:")
+#         print("  " + " ".join(self.vertex_data))
+#         for i, row in enumerate(self.adj_matrix):
+#             char = self.vertex_data[i]
+#             print(char, ' '.join(map(str, row)))
+#         print("\nVertex Data:")
+#         for vertex, data in enumerate(self.vertex_data):
+#             print(f"Vertex {vertex}: {data}")
+#
+# adj = AdjacencyMatrix(4)
+# adj.add_vertex(0, 'A')
+# adj.add_vertex(1, 'B')
+# adj.add_vertex(2, 'C')
+# adj.add_vertex(3, 'D')
+#
+# #A-B A-C
+# adj.add_edge(0, 1)
+# adj.add_edge(0, 2)
+# #B-A B-D
+# adj.add_edge(1, 0)
+# adj.add_edge(1, 3)
+# #C-A C-D
+# adj.add_edge(2, 0)
+# adj.add_edge(2, 3)
+# #D-B D-C
+# adj.add_edge(3, 1)
+# adj.add_edge(3, 2)
+
+# adj.print_graph()
+
+
+#Adjacency List
+# class UndirectedGraph:
+#     def __init__(self, size):
+#         self.size = size
+#         print('',self.size)
+#         self.vertex_data = [""] * size
+#         print(self.vertex_data)
+#         self.adj_list = {i: [] for i in range(size)}
+#         print(self.adj_list)
+#
+#     def add_vertex(self, index, vertex):
+#         if 0 <= index < self.size:
+#             print(f"Before: {self.vertex_data}")
+#             self.vertex_data[index] = vertex
+#             print(f"After: {self.vertex_data}")
+#
+#     def add_edge(self, u, v):
+#         if 0 <= u < self.size and 0 <= v < self.size:
+#             print(f"Adjacency List before: {self.adj_list}")
+#             if v not in self.adj_list[u]:
+#                 self.adj_list[u].append(v)
+#                 print(f"After: {self.adj_list}")
+#             if u not in self.adj_list[v]:
+#                 self.adj_list[v].append(u)
+#                 print(f"After: {self.adj_list}")
+#
+#     def print_graph(self):
+#         for i in range(self.size):
+#             vertex_name = self.vertex_data[i]
+#             neighbors = []
+#             for neighbor in self.adj_list[i]:
+#                 # print(f"Neighbor: {neighbor}, Vertex: {self.vertex_data[neighbor]}")
+#                 neighbors.append(self.vertex_data[neighbor])
+#             print(f"Vertex: {vertex_name}: {neighbors}")
+
+    # def print_graph(self):
+    #     print("\nAdjacency List:")
+    #     for i in range(self.size):
+    #         vertex_name = self.vertex_data[i]
+    #         neighbors = [self.vertex_data[neighbor] for neighbor in self.adj_list[i]]
+    #         print(f"Vertex: {vertex_name}: {', '.join(neighbors)}")
+
+# g = UndirectedGraph(3)
+#
+# g.add_vertex(0, 'A')
+# g.add_vertex(1, 'B')
+# g.add_vertex(2, 'C')
+#
+# #B-A
+# g.add_edge(1, 0)
+#
+# #C-A
+# g.add_edge(2, 0)
+#
+# g.print_graph()
+
+
+from typing import Union
+
+#Adjacency List
+class DirectedGraph:
+    def __init__(self, size: int) -> None:
+        self.size = size
+        self.vertices = [''] * size
+        self.adj = {i: [] for i in range(size)}
+        print(self.adj)
+
+    def add_vertex(self, index: int, vertex: Union[int, str]) -> None:
+        if 0 <= index < self.size:
+            self.vertices[index] = vertex
+
+    def add_edge(self, u: int, v: int) -> None:
+        if v not in self.adj[u]:
+            self.adj[u].append(v)
+
+    def print_graph(self) -> None:
+        print("Adjacency List, Directed Graph:\n")
+        for i in range(self.size):
+            vertex_name = self.vertices[i]
+            neighbors = []
+            for neighbor in self.adj[i]:
+                neighbors.append(self.vertices[neighbor])
+            if not neighbors:
+                print(f"Town Judge: {vertex_name} {neighbors}")
+                break
+            print(f"Vertex: {vertex_name}: {neighbors}")
+
+digraph = DirectedGraph(3)
+digraph.add_vertex(0, 1)
+digraph.add_vertex(1, 2)
+digraph.add_vertex(2, 3)
+
+digraph.add_edge(0,2)
+digraph.add_edge(1,2)
+digraph.print_graph()

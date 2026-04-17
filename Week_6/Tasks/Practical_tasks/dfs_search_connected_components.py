@@ -96,49 +96,125 @@
 # print("All connected components in graph:", search.connected_components())
 
 
-class AdjacencyList:
-    def __init__(self, size) -> None:
-        self.size = size
-        self.adj = {i: [] for i in range(size)}
-        self.vertices = [''] * size
-        self.visited = [0] * size
+# class AdjacencyList:
+#     def __init__(self, size) -> None:
+#         self.size = size
+#         self.adj = {i: [] for i in range(size)}
+#         self.vertices = [''] * size
+#         self.visited = [0] * size
+#
+#     def add_vertex(self, index, vertex) -> None:
+#         if 0 <= index <= self.size:
+#             self.vertices[index] = vertex
+#
+#     def add_edge(self, u, v):
+#         if v not in self.adj[u]:
+#             self.adj[u].append(v)
+#
+#     def css(self):
+#         self.visited = [0] * self.size
+#         count = 0
+#         components = []
+#
+#         for i in range(self.size):
+#             if self.visited[i] == 0:
+#                 count += 1
+#                 current_comp = []
+#                 self.dfs(i, self.visited, current_comp)
+#                 components.append(current_comp)
+#
+#         return f"Components quantity: {count}\nIndividual components: {components}"
+#
+#     def dfs(self, v, visited, components):
+#         visited[v] = 1
+#         components.append(visited[v])
+#
+#         for neighbor in self.adj[v]:
+#             if self.visited[neighbor] == 0:
+#                 self.dfs(neighbor, visited, components)
+#
+# adj = AdjacencyList(4)
+# adj.add_vertex(0, 'A'); adj.add_vertex(1, 'B')
+# adj.add_vertex(2, 'C'); adj.add_vertex(3, 'D')
+# #A
+# #D
+# #B-C
+# adj.add_edge(1, 2)
+#
+# print(adj.css())
 
-    def add_vertex(self, index, vertex) -> None:
-        if 0 <= index <= self.size:
-            self.vertices[index] = vertex
+# class AdjacencyList:
+#     def __init__(self, size):
+#         self.size = size
+#         self. list = {i: [] for i in range(size)}
+#         self.vertex = [''] * size
+#
+#     def add_vertex(self, index, vertex):
+#         if 0 <= index < self.size:
+#             self.vertex[index] = vertex
+#
+#     def add_edge(self, v, u):
+#         if u not in self.list[v]:
+#             self.list[v].append(u)
+#
+#     def dfs(self, v, visited):
+#         visited[v] = 1
+#         for neighbor in self.list[v]:
+#             if not visited[neighbor]:
+#                 self.dfs(neighbor, visited)
+#
+#     def main(self):
+#         visited = [0] * self.size
+#         count = 0
+#         for i in range(self.size):
+#             if not visited[i]:
+#                 count += 1
+#                 self.dfs(i, visited)
+#         return f"Counts: {count}"
+
+
+class AdjacencyList:
+    def __init__(self, size):
+        self.size = size
+        self.vertices = [''] * size
+        self.adj_list = {i: [] for i in range(size)}
+
+    def add_vertex(self, index, name):
+        if 0 <= index < self.size:
+            self.vertices[index] = name
 
     def add_edge(self, u, v):
-        if v not in self.adj[u]:
-            self.adj[u].append(v)
+        if u not in self.adj_list[v]:
+            self.adj_list[v].append(u)
+        if v not in self.adj_list[u]:
+            self.adj_list[u].append(v)
 
-    def css(self):
-        self.visited = [0] * self.size
-        count = 0
-        components = []
-
-        for i in range(self.size):
-            if self.visited[i] == 0:
-                count += 1
-                current_comp = []
-                self.dfs(i, self.visited, current_comp)
-                components.append(current_comp)
-
-        return f"Components quantity: {count}\nIndividual components: {components}"
-
-    def dfs(self, v, visited, components):
+    def dfs(self, v, visited):
         visited[v] = 1
-        components.append(visited[v])
 
-        for neighbor in self.adj[v]:
-            if self.visited[neighbor] == 0:
-                self.dfs(neighbor, visited, components)
+        for i in self.adj_list[v]:
+            if not visited[i]:
+                self.dfs(i, visited)
 
-adj = AdjacencyList(4)
-adj.add_vertex(0, 'A'); adj.add_vertex(1, 'B')
-adj.add_vertex(2, 'C'); adj.add_vertex(3, 'D')
-#A
-#D
-#B-C
+    def main(self):
+        visited = [0] * self.size
+        count = 0
+        for i in range(self.size):
+            if not visited[i]:
+                count += 1
+                self.dfs(i, visited)
+        return f"Counts: {count}"
+
+adj = AdjacencyList(6)
+adj.add_vertex(0, 'A')
+adj.add_vertex(1, 'B')
+adj.add_vertex(2, 'C')
+adj.add_vertex(3, 'D')
+adj.add_vertex(4, 'E')
+adj.add_vertex(5, 'F')
+
+adj.add_edge(0, 1)
 adj.add_edge(1, 2)
+adj.add_edge(1, 4)
 
-print(adj.css())
+print(adj.main())

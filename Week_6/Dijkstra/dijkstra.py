@@ -473,3 +473,99 @@ import heapq
 # }
 #
 # print(dijkstra(graph_data, 'A'))
+
+
+class PriorityQueue:
+    def __init__(self):
+        self.heap = []
+
+    def __bool__(self):
+        return len(self.heap) > 0
+
+    def push(self, distance: int, vertex: str) -> None:
+        print("Before append:", self.heap)
+        self.heap.append((distance, vertex))
+        print("After append ((distance, vertex)):", self.heap)
+        self._shift_up(len(self.heap) - 1)
+
+    def _shift_up(self, i):
+        while i > 0:
+            parent = (i - 1) // 2
+            if self.heap[i][0] < self.heap[parent][0]:
+                (self.heap[i], self.heap[parent]) = \
+                    (self.heap[parent], self.heap[i])
+                i = parent
+            else:
+                break
+
+    def _shift_down(self, i) -> None:
+        length = len(self.heap)
+        while True:
+            target = i
+            left = i * 2 + 1
+            right = i * 2 + 2
+
+            if left < length and self.heap[left][0] < self.heap[target][0]:
+                target = left
+            if right < length and self.heap[right][0] < self.heap[target][0]:
+                target = right
+
+            if target != i:
+                self.heap[i], self.heap[target] = self.heap[target], self.heap[i]
+                i = target
+            else:
+                break
+
+    def pop(self) -> int | None:
+        if not self.heap:
+            return None
+        if len(self.heap) == 1:
+            return self.heap.pop()
+
+        root = self.heap[0]
+        self.heap[0] = self.heap.pop()
+        self._shift_down(0)
+        return root
+
+    def heapify(self, arr: list) -> None:
+        for i in range(len(arr)):
+            self._shift_down(i)
+
+def dijkstra(graph, start):
+    distances = {i: float('inf') for i in range(len(graph))}
+    distances[start] = 0
+
+    pq = PriorityQueue()
+    pq.push(0, start)
+
+    while pq:
+        pop_result = pq.pop()
+        if not pop_result:
+            break
+
+        current_distance, u = pop_result
+
+        if current_distance > distances[u]:
+            continue
+
+        for v, w in graph[u].items():
+            distance = current_distance + w
+
+            if distance < distances[v]:
+                distances[v] = distance
+                pq.push(distance, v)
+
+    return distances
+
+#{u: {v: w}}
+city_graph = {
+    0: {1: 4, 2: 1},
+    1: {3: 1},
+    2: {1: 2, 3: 5},
+    3: {4: 3},
+    4: {}
+}
+
+result = dijkstra(city_graph, 0)
+for v, w in result.items():
+    print(f"TO: {v} | MIN WEIGHT: {w}")

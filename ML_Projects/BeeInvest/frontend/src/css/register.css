@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.registration-container {
+    max-width: 300px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 300px;
+    margin: 10px auto;
+}
+
+.button {
+    background-color: #274FC7;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    width: 100%;
+    padding: 8px;
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    border-color: #274FC7;
+}

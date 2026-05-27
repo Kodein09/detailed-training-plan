@@ -1,6 +1,6 @@
 import pandas as pd
 
-dataset = pd.read_csv("train.csv")
+dataset = pd.read_csv("../train.csv")
 
 # def dataset_analysis(df: pd.DataFrame) -> str:
 #     result = {

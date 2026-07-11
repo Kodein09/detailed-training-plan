@@ -1,1 +1,1 @@
-# detailed-three-month-training-plan
+# detailed-training-plan

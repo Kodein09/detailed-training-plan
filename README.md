@@ -1,5 +1,5 @@
 # detailed-training-plan
-### Детальный 3-месячный план обучения Python для Data Science и DSA  
+### Детальный план обучения Python, Data Science, DSA, DevOps, MLOps
 
 ### МЕСЯЦ 1: Фундаментальные основы Python и базовые алгоритмы 
 
